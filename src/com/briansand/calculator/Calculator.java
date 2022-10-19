@@ -1,11 +1,14 @@
 package com.briansand.calculator;
 
 import java.awt.TextField;
+import java.util.logging.Logger;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 public class Calculator {
-
+	static Logger logger = Logger.getLogger(Calculator.class.getName());
 	JFrame f;
 
 	// Number buttons
@@ -17,7 +20,9 @@ public class Calculator {
 	// Text field
 	TextField tf;
 
-	public void run() {
+	void run() {
+		logger.info("Starting");
+		
 		// Initializes frame
 		f = new JFrame();
 
@@ -79,7 +84,7 @@ public class Calculator {
 		buttonclear = new JButton("C");
 		buttonclear.setBounds(200, 80, 50, 50);
 		// Output field
-		tf = new TextField();
+		tf = new TextField(12);
 		tf.setBounds(50, 80, 150, 50);
 
 		f.add(button0);
@@ -100,16 +105,19 @@ public class Calculator {
 		f.add(buttonneg);
 		f.add(buttonclear);
 		f.add(tf);
-
-		f.setLayout(null);
+		
+		Math m = new Math(this);
+		m.initialize();
 		f.setVisible(true);
 	}
 
 	public static void main(String[] args) {
-
-		Math calc = new Math();
-
-		calc.run();
+		logger.info("main");
+		
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new Calculator().run();
+            }
+        });        		
 	}
-
 }
