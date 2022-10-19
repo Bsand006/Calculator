@@ -12,7 +12,7 @@ public class Math implements ActionListener {
 		super();
 		this.calc = calc;
 	}
-	
+
 	public void initialize() {
 		calc.button0.addActionListener(this);
 		calc.button1.addActionListener(this);
@@ -21,10 +21,13 @@ public class Math implements ActionListener {
 		calc.button4.addActionListener(this);
 		calc.button5.addActionListener(this);
 		calc.button6.addActionListener(this);
+		calc.button7.addActionListener(this);
+		calc.button8.addActionListener(this);
+		calc.button9.addActionListener(this);
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		System.err.println("ActionEvent received: " + e);
-		calc.tf.setText(calc.tf.getText() + ((JButton)e.getSource()).getText());
+		calc.tf.setText(calc.tf.getText() + ((JButton) e.getSource()).getText());
 	}
 }
