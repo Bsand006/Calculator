@@ -14,7 +14,7 @@ public class Math implements ActionListener {
 	}
 
 	// Adds TextField values to a string
-	String textvalues = calc.tf.getText();
+	String textvalues;
 
 	// Number variables
 	double num1 = 0;
@@ -49,6 +49,8 @@ public class Math implements ActionListener {
 
 	// ActionEvent method
 	public void actionPerformed(ActionEvent e) {
+
+		String textvalues = calc.tf.getText();
 
 		// Prints action received system message
 		System.err.println("ActionEvent received: " + e);
