@@ -1,10 +1,12 @@
 package com.briansand.calculator;
 
+import java.awt.GridLayout;
 import java.awt.TextField;
 import java.util.logging.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
 public class Calculator {
@@ -16,21 +18,33 @@ public class Calculator {
 	// Function buttons
 	JButton buttonplus, buttonminus, buttonmult, buttondivide;
 	// Operation buttons
-	JButton buttonclear, buttondec, buttonneg;
+	JButton buttonclear, buttondec, buttonneg, buttonent;
 	// Text field
 	TextField tf;
+	// Blank filler
+	JLabel blank, blank1;
 
 	void run() {
 		logger.info("Starting");
-		
+
 		// Initializes frame
 		f = new JFrame();
+
+		// initializes GridLayout
+		GridLayout calclayout = new GridLayout(5, 4);
+
+		// Calls setLayout with GridLayout object
+		f.setLayout(calclayout);
 
 		// Title
 		f.setTitle("Calculator");
 
 		// Sets frame size
 		f.setSize(300, 400);
+
+		// Blank filler
+		blank = new JLabel();
+		blank1 = new JLabel();
 
 		// Button 0
 		button0 = new JButton("0");
@@ -83,29 +97,35 @@ public class Calculator {
 		// Clear button
 		buttonclear = new JButton("C");
 		buttonclear.setBounds(200, 80, 50, 50);
+		// Enter button
+		buttonent = new JButton("E");
+		buttonent.setBounds(100, 100, 50, 50);
 		// Output field
-		tf = new TextField(12);
+		tf = new TextField();
 		tf.setBounds(50, 80, 150, 50);
 
-		f.add(button0);
-		f.add(button1);
-		f.add(button2);
-		f.add(button3);
-		f.add(button4);
-		f.add(button5);
-		f.add(button6);
+		// Adds buttons & TextField to JFrame
+		f.add(tf);
+		f.add(blank1);
+		f.add(buttonclear);
+		f.add(buttonclear);
 		f.add(button7);
 		f.add(button8);
 		f.add(button9);
-		f.add(buttonplus);
-		f.add(buttonminus);
-		f.add(buttonmult);
 		f.add(buttondivide);
-		f.add(buttondec);
+		f.add(button4);
+		f.add(button5);
+		f.add(button6);
+		f.add(buttonmult);
+		f.add(button1);
+		f.add(button2);
+		f.add(button3);
+		f.add(buttonminus);
 		f.add(buttonneg);
-		f.add(buttonclear);
-		f.add(tf);
-		
+		f.add(button0);
+		f.add(buttondec);
+		f.add(buttonplus);
+
 		Math m = new Math(this);
 		m.initialize();
 		f.setVisible(true);
@@ -113,11 +133,11 @@ public class Calculator {
 
 	public static void main(String[] args) {
 		logger.info("main");
-		
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new Calculator().run();
-            }
-        });        		
+
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				new Calculator().run();
+			}
+		});
 	}
 }
