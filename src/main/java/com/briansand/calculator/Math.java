@@ -68,6 +68,7 @@ public class Math implements ActionListener {
 		if (e.getSource() == calc.buttonplus) {
 			op = CalcOperations.ADD;
 			num1 = Double.parseDouble(textvalues);
+			calc.tf.setText("");
 			if (num1 != 0) {
 				num2 = Double.parseDouble(textvalues);
 			}
@@ -77,6 +78,7 @@ public class Math implements ActionListener {
 		if (e.getSource() == calc.buttonminus) {
 			op = CalcOperations.SUBTRACT;
 			num1 = Double.parseDouble(textvalues);
+			calc.tf.setText("");
 			if (num1 != 0) {
 				num2 = Double.parseDouble(textvalues);
 			}
@@ -85,6 +87,7 @@ public class Math implements ActionListener {
 		if (e.getSource() == calc.buttonmult) {
 			op = CalcOperations.MODIFY;
 			num1 = Double.parseDouble(textvalues);
+			calc.tf.setText("");
 			if (num1 != 0) {
 				num2 = Double.parseDouble(textvalues);
 			}
@@ -93,6 +96,7 @@ public class Math implements ActionListener {
 		if (e.getSource() == calc.buttondivide) {
 			op = CalcOperations.DIVIDE;
 			num1 = Double.parseDouble(textvalues);
+			calc.tf.setText("");
 			if (num1 != 0) {
 				num2 = Double.parseDouble(textvalues);
 			}
@@ -108,7 +112,8 @@ public class Math implements ActionListener {
 			} else {
 				num3 = String.valueOf(num1 / num2);
 			}
+			calc.tf.setText(num3);
 		}
-		calc.tf.setText(num3);
+
 	}
 }
