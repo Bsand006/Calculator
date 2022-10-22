@@ -1,11 +1,12 @@
 package com.briansand.calculator;
 
+import java.lang.Math;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-public class Math implements ActionListener {
+public class Logic implements ActionListener {
 	Calculator calc;
 
 	// Operations enumeration
@@ -16,15 +17,16 @@ public class Math implements ActionListener {
 	// Adds TextField values to a string
 	String textvalues;
 
-	// Number variables
+	// variables
 	double num1 = 0;
 	double num2 = 0;
+
 	String num3;
 
 	// Operations variable
 	CalcOperations op;
 
-	public Math(Calculator calc) {
+	public Logic(Calculator calc) {
 		super();
 		this.calc = calc;
 	}
@@ -47,7 +49,10 @@ public class Math implements ActionListener {
 		calc.buttonminus.addActionListener(this);
 		calc.buttonmult.addActionListener(this);
 		calc.buttondivide.addActionListener(this);
+		calc.buttondec.addActionListener(this);
+		calc.buttonneg.addActionListener(this);
 		calc.buttonent.addActionListener(this);
+		calc.buttonclear.addActionListener(this);
 	}
 
 	// ActionEvent method
@@ -61,48 +66,42 @@ public class Math implements ActionListener {
 		if (e.getSource() == calc.button0 || e.getSource() == calc.button1 || e.getSource() == calc.button2
 				|| e.getSource() == calc.button3 || e.getSource() == calc.button4 || e.getSource() == calc.button5
 				|| e.getSource() == calc.button6 || e.getSource() == calc.button7 || e.getSource() == calc.button8
-				|| e.getSource() == calc.button9) {
+				|| e.getSource() == calc.button9 || e.getSource() == calc.buttondec
+				|| e.getSource() == calc.buttonneg) {
 			calc.tf.setText(calc.tf.getText() + ((JButton) e.getSource()).getText());
 		}
-		// Add variable logic
+		// Addition variable logic
 		if (e.getSource() == calc.buttonplus) {
 			op = CalcOperations.ADD;
 			num1 = Double.parseDouble(textvalues);
 			calc.tf.setText("");
-			if (num1 != 0) {
-				num2 = Double.parseDouble(textvalues);
-			}
 
 		}
+
 		// Subtract variable logic
 		if (e.getSource() == calc.buttonminus) {
 			op = CalcOperations.SUBTRACT;
 			num1 = Double.parseDouble(textvalues);
 			calc.tf.setText("");
-			if (num1 != 0) {
-				num2 = Double.parseDouble(textvalues);
-			}
+
 		}
 		// Multiply variable logic
 		if (e.getSource() == calc.buttonmult) {
 			op = CalcOperations.MODIFY;
 			num1 = Double.parseDouble(textvalues);
 			calc.tf.setText("");
-			if (num1 != 0) {
-				num2 = Double.parseDouble(textvalues);
-			}
+
 		}
 		// Division variable logic
 		if (e.getSource() == calc.buttondivide) {
 			op = CalcOperations.DIVIDE;
 			num1 = Double.parseDouble(textvalues);
 			calc.tf.setText("");
-			if (num1 != 0) {
-				num2 = Double.parseDouble(textvalues);
-			}
+
 		}
-		// Addition calculation logic
+		// Calculation logic
 		if (e.getSource() == calc.buttonent) {
+			num2 = Double.parseDouble(textvalues);
 			if (op == CalcOperations.ADD) {
 				num3 = String.valueOf(num1 + num2);
 			} else if (op == CalcOperations.SUBTRACT) {
@@ -113,7 +112,14 @@ public class Math implements ActionListener {
 				num3 = String.valueOf(num1 / num2);
 			}
 			calc.tf.setText(num3);
+			num1 = 0;
+			num2 = 0;
 		}
-
+		// Clear button logic
+		if (e.getSource() == calc.buttonclear) {
+			calc.tf.setText("");
+			num1 = 0;
+			num2 = 0;
+		}
 	}
 }

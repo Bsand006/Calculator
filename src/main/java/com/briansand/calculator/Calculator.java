@@ -16,13 +16,13 @@ public class Calculator {
 	// Number buttons
 	JButton button0, button1, button2, button3, button4, button5, button6, button7, button8, button9;
 	// Function buttons
-	JButton buttonplus, buttonminus, buttonmult, buttondivide;
+	JButton buttonplus, buttonminus, buttonmult, buttondivide, buttonsqrt, buttonsquared, buttonpercent, buttonfrac;
 	// Operation buttons
 	JButton buttonclear, buttondec, buttonneg, buttonent;
 	// Text field
 	TextField tf;
 	// Blank filler
-	JLabel blank, blank1;
+	JLabel blank, blank1, blank2, blank3, blank4;
 
 	void run() {
 		logger.info("Starting");
@@ -31,7 +31,7 @@ public class Calculator {
 		f = new JFrame();
 
 		// initializes GridLayout
-		GridLayout calclayout = new GridLayout(5, 4);
+		GridLayout calclayout = new GridLayout(5, 5);
 
 		// Calls setLayout with GridLayout object
 		f.setLayout(calclayout);
@@ -45,6 +45,9 @@ public class Calculator {
 		// Blank filler
 		blank = new JLabel();
 		blank1 = new JLabel();
+		blank2 = new JLabel();
+		blank3 = new JLabel();
+		blank4 = new JLabel();
 
 		// Button 0
 		button0 = new JButton("0");
@@ -88,11 +91,23 @@ public class Calculator {
 		// Button /
 		buttondivide = new JButton("/");
 		buttondivide.setBounds(200, 130, 50, 50);
+		// Square root button
+		buttonsqrt = new JButton("√");
+		buttonsqrt.setBounds(100, 100, 50, 50);
+		// Squared button
+		buttonsquared = new JButton("^2");
+		buttonsquared.setBounds(100, 100, 50, 50);
+		// Percent button
+		buttonpercent = new JButton("%");
+		buttonpercent.setBounds(100, 100, 50, 50);
+		// Fraction button
+		buttonfrac = new JButton("F");
+		buttonfrac.setBounds(100, 100, 50, 50);
 		// Decimal button
 		buttondec = new JButton(".");
 		buttondec.setBounds(50, 280, 50, 50);
 		// Negative button
-		buttonneg = new JButton("(-)");
+		buttonneg = new JButton("-");
 		buttonneg.setBounds(150, 280, 50, 50);
 		// Clear button
 		buttonclear = new JButton("C");
@@ -107,26 +122,31 @@ public class Calculator {
 		// Adds buttons & TextField to JFrame
 		f.add(tf);
 		f.add(blank);
-		f.add(buttonent);
+		f.add(blank1);
 		f.add(buttonclear);
+		f.add(buttondivide);
+		f.add(buttonfrac);
 		f.add(button7);
 		f.add(button8);
 		f.add(button9);
-		f.add(buttondivide);
+		f.add(buttonmult);
+		f.add(buttonpercent);
 		f.add(button4);
 		f.add(button5);
 		f.add(button6);
-		f.add(buttonmult);
+		f.add(buttonminus);
+		f.add(buttonsquared);
 		f.add(button1);
 		f.add(button2);
 		f.add(button3);
-		f.add(buttonminus);
+		f.add(buttonplus);
+		f.add(buttonsqrt);
 		f.add(buttonneg);
 		f.add(button0);
 		f.add(buttondec);
-		f.add(buttonplus);
+		f.add(buttonent);
 
-		Math m = new Math(this);
+		Logic m = new Logic(this);
 		m.initialize();
 		f.setVisible(true);
 	}
