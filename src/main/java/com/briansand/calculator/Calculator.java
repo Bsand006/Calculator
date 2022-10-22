@@ -106,8 +106,8 @@ public class Calculator {
 
 		// Adds buttons & TextField to JFrame
 		f.add(tf);
-		f.add(blank1);
-		f.add(buttonclear);
+		f.add(blank);
+		f.add(buttonent);
 		f.add(buttonclear);
 		f.add(button7);
 		f.add(button8);

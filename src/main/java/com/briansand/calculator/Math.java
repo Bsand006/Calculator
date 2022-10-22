@@ -19,6 +19,7 @@ public class Math implements ActionListener {
 	// Number variables
 	double num1 = 0;
 	double num2 = 0;
+	String num3;
 
 	// Operations variable
 	CalcOperations op;
@@ -41,22 +42,28 @@ public class Math implements ActionListener {
 		calc.button7.addActionListener(this);
 		calc.button8.addActionListener(this);
 		calc.button9.addActionListener(this);
+
 		calc.buttonplus.addActionListener(this);
 		calc.buttonminus.addActionListener(this);
 		calc.buttonmult.addActionListener(this);
 		calc.buttondivide.addActionListener(this);
+		calc.buttonent.addActionListener(this);
 	}
 
 	// ActionEvent method
 	public void actionPerformed(ActionEvent e) {
 
-		String textvalues = calc.tf.getText();
+		textvalues = calc.tf.getText();
 
 		// Prints action received system message
 		System.err.println("ActionEvent received: " + e);
 		// Prints pressed button value to TextField
-		calc.tf.setText(calc.tf.getText() + ((JButton) e.getSource()).getText());
-
+		if (e.getSource() == calc.button0 || e.getSource() == calc.button1 || e.getSource() == calc.button2
+				|| e.getSource() == calc.button3 || e.getSource() == calc.button4 || e.getSource() == calc.button5
+				|| e.getSource() == calc.button6 || e.getSource() == calc.button7 || e.getSource() == calc.button8
+				|| e.getSource() == calc.button9) {
+			calc.tf.setText(calc.tf.getText() + ((JButton) e.getSource()).getText());
+		}
 		// Add variable logic
 		if (e.getSource() == calc.buttonplus) {
 			op = CalcOperations.ADD;
@@ -90,5 +97,18 @@ public class Math implements ActionListener {
 				num2 = Double.parseDouble(textvalues);
 			}
 		}
+		// Addition calculation logic
+		if (e.getSource() == calc.buttonent) {
+			if (op == CalcOperations.ADD) {
+				num3 = String.valueOf(num1 + num2);
+			} else if (op == CalcOperations.SUBTRACT) {
+				num3 = String.valueOf(num1 - num2);
+			} else if (op == CalcOperations.MODIFY) {
+				num3 = String.valueOf(num1 * num2);
+			} else {
+				num3 = String.valueOf(num1 / num2);
+			}
+		}
+		calc.tf.setText(num3);
 	}
 }
