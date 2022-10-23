@@ -1,7 +1,9 @@
 package com.briansand.calculator;
 
-import java.awt.GridLayout;
 import java.awt.TextField;
+import java.awt.GridLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.util.logging.Logger;
 
 import javax.swing.JButton;
@@ -16,13 +18,13 @@ public class Calculator {
 	// Number buttons
 	JButton button0, button1, button2, button3, button4, button5, button6, button7, button8, button9;
 	// Function buttons
-	JButton buttonplus, buttonminus, buttonmult, buttondivide, buttonsqrt, buttonsquared, buttonpercent, buttonfrac;
+	JButton buttonplus, buttonminus, buttonmult, buttondivide, buttonsqrt, buttonsquared, buttonpie, buttonfrac;
 	// Operation buttons
 	JButton buttonclear, buttondec, buttonneg, buttonent;
 	// Text field
 	TextField tf;
 	// Blank filler
-	JLabel blank, blank1, blank2, blank3, blank4;
+	JLabel blank, blank1, blank2, blank3, blank4, blank5;
 
 	void run() {
 		logger.info("Starting");
@@ -48,6 +50,7 @@ public class Calculator {
 		blank2 = new JLabel();
 		blank3 = new JLabel();
 		blank4 = new JLabel();
+		blank5 = new JLabel();
 
 		// Button 0
 		button0 = new JButton("0");
@@ -95,11 +98,11 @@ public class Calculator {
 		buttonsqrt = new JButton("√");
 		buttonsqrt.setBounds(100, 100, 50, 50);
 		// Squared button
-		buttonsquared = new JButton("^2");
+		buttonsquared = new JButton("^");
 		buttonsquared.setBounds(100, 100, 50, 50);
 		// Percent button
-		buttonpercent = new JButton("%");
-		buttonpercent.setBounds(100, 100, 50, 50);
+		buttonpie = new JButton("π");
+		buttonpie.setBounds(100, 100, 50, 50);
 		// Fraction button
 		buttonfrac = new JButton("F");
 		buttonfrac.setBounds(100, 100, 50, 50);
@@ -125,22 +128,22 @@ public class Calculator {
 		f.add(blank1);
 		f.add(buttonclear);
 		f.add(buttondivide);
-		f.add(buttonfrac);
+		f.add(blank4);
 		f.add(button7);
 		f.add(button8);
 		f.add(button9);
 		f.add(buttonmult);
-		f.add(buttonpercent);
+		f.add(buttonsquared);
 		f.add(button4);
 		f.add(button5);
 		f.add(button6);
 		f.add(buttonminus);
-		f.add(buttonsquared);
+		f.add(buttonsqrt);
 		f.add(button1);
 		f.add(button2);
 		f.add(button3);
 		f.add(buttonplus);
-		f.add(buttonsqrt);
+		f.add(buttonpie);
 		f.add(buttonneg);
 		f.add(button0);
 		f.add(buttondec);

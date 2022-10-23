@@ -1,6 +1,5 @@
 package com.briansand.calculator;
 
-import java.lang.Math;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -20,7 +19,9 @@ public class Logic implements ActionListener {
 	// variables
 	double num1 = 0;
 	double num2 = 0;
+	double pi = Math.PI;
 
+	boolean sqrt;
 	String num3;
 
 	// Operations variable
@@ -50,7 +51,9 @@ public class Logic implements ActionListener {
 		calc.buttonmult.addActionListener(this);
 		calc.buttondivide.addActionListener(this);
 		calc.buttondec.addActionListener(this);
+		calc.buttonsqrt.addActionListener(this);
 		calc.buttonneg.addActionListener(this);
+		calc.buttonpie.addActionListener(this);
 		calc.buttonent.addActionListener(this);
 		calc.buttonclear.addActionListener(this);
 	}
@@ -59,6 +62,7 @@ public class Logic implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		textvalues = calc.tf.getText();
+		sqrt = false;
 
 		// Prints action received system message
 		System.err.println("ActionEvent received: " + e);
@@ -66,16 +70,17 @@ public class Logic implements ActionListener {
 		if (e.getSource() == calc.button0 || e.getSource() == calc.button1 || e.getSource() == calc.button2
 				|| e.getSource() == calc.button3 || e.getSource() == calc.button4 || e.getSource() == calc.button5
 				|| e.getSource() == calc.button6 || e.getSource() == calc.button7 || e.getSource() == calc.button8
-				|| e.getSource() == calc.button9 || e.getSource() == calc.buttondec
-				|| e.getSource() == calc.buttonneg) {
+				|| e.getSource() == calc.button9 || e.getSource() == calc.buttondec || e.getSource() == calc.buttonneg
+				|| e.getSource() == calc.buttonsqrt) {
 			calc.tf.setText(calc.tf.getText() + ((JButton) e.getSource()).getText());
 		}
+
 		// Addition variable logic
 		if (e.getSource() == calc.buttonplus) {
 			op = CalcOperations.ADD;
 			num1 = Double.parseDouble(textvalues);
-			calc.tf.setText("");
 
+			calc.tf.setText("");
 		}
 
 		// Subtract variable logic
@@ -99,22 +104,26 @@ public class Logic implements ActionListener {
 			calc.tf.setText("");
 
 		}
+
 		// Calculation logic
 		if (e.getSource() == calc.buttonent) {
+
 			num2 = Double.parseDouble(textvalues);
-			if (op == CalcOperations.ADD) {
-				num3 = String.valueOf(num1 + num2);
-			} else if (op == CalcOperations.SUBTRACT) {
-				num3 = String.valueOf(num1 - num2);
-			} else if (op == CalcOperations.MODIFY) {
-				num3 = String.valueOf(num1 * num2);
-			} else {
-				num3 = String.valueOf(num1 / num2);
-			}
-			calc.tf.setText(num3);
-			num1 = 0;
-			num2 = 0;
 		}
+		if (op == CalcOperations.ADD) {
+			num3 = String.valueOf(num1 + num2);
+		} else if (op == CalcOperations.SUBTRACT) {
+			num3 = String.valueOf(num1 - num2);
+		} else if (op == CalcOperations.MODIFY) {
+			num3 = String.valueOf(num1 * num2);
+		} else {
+			num3 = String.valueOf(num1 / num2);
+		}
+		calc.tf.setText(num3);
+
+		num1 = 0;
+		num2 = 0;
+
 		// Clear button logic
 		if (e.getSource() == calc.buttonclear) {
 			calc.tf.setText("");
