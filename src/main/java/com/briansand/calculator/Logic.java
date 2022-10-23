@@ -71,7 +71,7 @@ public class Logic implements ActionListener {
 				|| e.getSource() == calc.button3 || e.getSource() == calc.button4 || e.getSource() == calc.button5
 				|| e.getSource() == calc.button6 || e.getSource() == calc.button7 || e.getSource() == calc.button8
 				|| e.getSource() == calc.button9 || e.getSource() == calc.buttondec || e.getSource() == calc.buttonneg
-				|| e.getSource() == calc.buttonsqrt) {
+				|| e.getSource() == calc.buttonsqrt) { // TODO why squareroot here? squareroot is an operation
 			calc.tf.setText(calc.tf.getText() + ((JButton) e.getSource()).getText());
 		}
 
@@ -107,22 +107,21 @@ public class Logic implements ActionListener {
 
 		// Calculation logic
 		if (e.getSource() == calc.buttonent) {
-
 			num2 = Double.parseDouble(textvalues);
-		}
-		if (op == CalcOperations.ADD) {
-			num3 = String.valueOf(num1 + num2);
-		} else if (op == CalcOperations.SUBTRACT) {
-			num3 = String.valueOf(num1 - num2);
-		} else if (op == CalcOperations.MODIFY) {
-			num3 = String.valueOf(num1 * num2);
-		} else {
-			num3 = String.valueOf(num1 / num2);
-		}
-		calc.tf.setText(num3);
+			if (op == CalcOperations.ADD) {
+				num3 = String.valueOf(num1 + num2);
+			} else if (op == CalcOperations.SUBTRACT) {
+				num3 = String.valueOf(num1 - num2);
+			} else if (op == CalcOperations.MODIFY) {
+				num3 = String.valueOf(num1 * num2);
+			} else {
+				num3 = String.valueOf(num1 / num2);
+			}
+			calc.tf.setText(num3);
 
-		num1 = 0;
-		num2 = 0;
+			num1 = 0;
+			num2 = 0;
+		}
 
 		// Clear button logic
 		if (e.getSource() == calc.buttonclear) {

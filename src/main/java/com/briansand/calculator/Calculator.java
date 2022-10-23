@@ -1,9 +1,7 @@
 package com.briansand.calculator;
 
-import java.awt.TextField;
 import java.awt.GridLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.TextField;
 import java.util.logging.Logger;
 
 import javax.swing.JButton;
