@@ -99,7 +99,7 @@ public class Calculator {
 		buttonsquared = new JButton("^");
 		buttonsquared.setBounds(100, 100, 50, 50);
 		// Percent button
-		buttonpie = new JButton("π");
+		buttonpie = new JButton("pi");
 		buttonpie.setBounds(100, 100, 50, 50);
 		// Fraction button
 		buttonfrac = new JButton("F");

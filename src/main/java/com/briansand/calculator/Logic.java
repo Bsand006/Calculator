@@ -2,6 +2,7 @@ package com.briansand.calculator;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.Math;
 
 import javax.swing.JButton;
 
@@ -70,12 +71,24 @@ public class Logic implements ActionListener {
 		if (e.getSource() == calc.button0 || e.getSource() == calc.button1 || e.getSource() == calc.button2
 				|| e.getSource() == calc.button3 || e.getSource() == calc.button4 || e.getSource() == calc.button5
 				|| e.getSource() == calc.button6 || e.getSource() == calc.button7 || e.getSource() == calc.button8
-				|| e.getSource() == calc.button9 || e.getSource() == calc.buttondec || e.getSource() == calc.buttonneg
-				|| e.getSource() == calc.buttonsqrt) { // TODO why squareroot here? squareroot is an operation
+				|| e.getSource() == calc.button9 || e.getSource() == calc.buttondec
+				|| e.getSource() == calc.buttonneg) {
 			calc.tf.setText(calc.tf.getText() + ((JButton) e.getSource()).getText());
 		}
 
-		// Addition variable logic
+		// Square root logic
+		if (e.getSource() == calc.buttonsqrt) {
+			num1 = Double.parseDouble(textvalues);
+			num1 = Math.sqrt(num1);
+		}
+
+		// Pi logic
+		if (e.getSource() == calc.buttonpie) {
+			calc.tf.setText("3.14");
+
+		}
+
+		// Addition variable logics
 		if (e.getSource() == calc.buttonplus) {
 			op = CalcOperations.ADD;
 			num1 = Double.parseDouble(textvalues);
@@ -83,14 +96,14 @@ public class Logic implements ActionListener {
 			calc.tf.setText("");
 		}
 
-		// Subtract variable logic
+		// Subtraction variable logic
 		if (e.getSource() == calc.buttonminus) {
 			op = CalcOperations.SUBTRACT;
 			num1 = Double.parseDouble(textvalues);
 			calc.tf.setText("");
 
 		}
-		// Multiply variable logic
+		// Multiplication variable logic
 		if (e.getSource() == calc.buttonmult) {
 			op = CalcOperations.MODIFY;
 			num1 = Double.parseDouble(textvalues);
